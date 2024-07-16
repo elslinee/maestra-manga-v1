@@ -1,0 +1,117 @@
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+
+function Header() {
+  return (
+    <header className="bg-background h-24 lg:h-28 border-b-[2px] border-black">
+      <div className="container h-full flex justify-between">
+        <div className="logo flex  h-full items-center  ">
+          <a className="block lg:ml-12" href="#">
+            <Image src={"/logo.svg"} alt={"logo"} width={100} height={100} />
+          </a>
+          <nav aria-label="Global" className="hidden lg:block">
+            <ul className="flex items-center gap-10  lg:text-[22px] text-nowrap ">
+              <li>
+                <Link
+                  className="text-white transition hover:text-primary  "
+                  href="/"
+                >
+                  قائمة الأعمال
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  className="text-white transition hover:text-primary "
+                  href="/"
+                >
+                  من نحن
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="text-white transition hover:text-primary "
+                  href="/"
+                >
+                  الإنضمام لنا
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="text-white transition hover:text-primary "
+                  href="/"
+                >
+                  المُفضلة
+                </Link>
+              </li>
+              <li className="">
+                <Link
+                  className="text-white transition hover:text-primary items-center  flex gap-1"
+                  href="/"
+                >
+                  إدعمنا
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="size-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+                    />
+                  </svg>
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div className="searchLabel relative flex justify-center items-center  w-[300px]  ">
+          <label htmlFor="Search" className=""></label>
+          <input
+            type="text"
+            id="Search"
+            placeholder="بحث"
+            className="w-full  placeholder:text-white/75  tr-4 text-[18px]  pl-12 py-2.5 pr-4 shadow-sm  bg-background text-white"
+          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="#c3c4c5"
+            className="size-6 absolute left-4"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+            />
+          </svg>
+        </div>
+        <div className="menu lg:hidden  h-full flex justify-center items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="white"
+            className="size-8"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+export default Header;
