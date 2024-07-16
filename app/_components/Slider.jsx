@@ -6,13 +6,27 @@ import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import Image from "next/image";
 import SectionTitle from "./SectionTitle";
 import { Alata } from "next/font/google";
+
 const alata = Alata({ subsets: ["latin"], weight: "400" });
+
 function Slider() {
+  const slides = [
+    { src: "/img1.jpg", title: "The Genius Actor’s Aura" },
+    { src: "/img2.jpg", title: "The Genius Actor’s Aura" },
+    { src: "/img2.jpg", title: "The Genius Actor’s Aura" },
+    { src: "/img2.jpg", title: "The Genius Actor’s Aura" },
+    { src: "/img2.jpg", title: "The Genius Actor’s Aura" },
+    { src: "/img2.jpg", title: "The Genius Actor’s Aura" },
+    { src: "/img2.jpg", title: "The Genius Actor’s Aura" },
+    { src: "/img2.jpg", title: "The Genius Actor’s Aura" },
+    // Add more slides as needed
+  ];
+
   return (
-    <section className=" bg-background  py-14 lg:py-28">
+    <section className="bg-background py-14 lg:py-28">
       <SectionTitle title={"الأعمال الرائجة"} />
-      <div className="container ">
-        <div className="slider relative ">
+      <div className="container">
+        <div className="slider relative">
           <Swiper
             slidesPerView={5}
             spaceBetween={30}
@@ -29,100 +43,30 @@ function Slider() {
               340: {
                 slidesPerView: 2,
               },
-              // when window width is >= 640px
               640: {
                 slidesPerView: 3,
               },
-              // when window width is >= 1024px
               1024: {
                 slidesPerView: 5,
               },
             }}
-            className="mySwiper  "
+            className="mySwiper"
           >
-            <SwiperSlide>
-              <div className="manga-card ">
-                <Image src={"/img1.jpg"} alt="img" width={290} height={400} />
-                <h2
-                  className={` ${alata.className}  text-white text-left text-[16px] lg:text-[22px]`}
-                >
-                  The Genius Actor’s Aura
-                </h2>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="manga-card ">
-                <Image src={"/img1.jpg"} alt="img" width={290} height={400} />
-                <h2
-                  className={` ${alata.className}  text-white text-left text-[16px] lg:text-[22px]`}
-                >
-                  The Genius Actor’s Aura
-                </h2>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="manga-card ">
-                <Image src={"/img1.jpg"} alt="img" width={290} height={400} />
-                <h2
-                  className={` ${alata.className}  text-white text-left text-[16px] lg:text-[22px]`}
-                >
-                  The Genius Actor’s Aura
-                </h2>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="manga-card ">
-                <Image src={"/img1.jpg"} alt="img" width={290} height={400} />
-                <h2
-                  className={` ${alata.className}  text-white text-left text-[16px] lg:text-[22px]`}
-                >
-                  The Genius Actor’s Aura
-                </h2>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="manga-card ">
-                <Image src={"/img1.jpg"} alt="img" width={290} height={400} />
-                <h2
-                  className={` ${alata.className}  text-white text-left text-[16px] lg:text-[22px]`}
-                >
-                  The Genius Actor’s Aura
-                </h2>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="manga-card ">
-                <Image src={"/img1.jpg"} alt="img" width={290} height={400} />
-                <h2
-                  className={` ${alata.className}  text-white text-left text-[16px] lg:text-[22px]`}
-                >
-                  The Genius Actor’s Aura
-                </h2>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="manga-card ">
-                <Image src={"/img1.jpg"} alt="img" width={290} height={400} />
-                <h2
-                  className={` ${alata.className}  text-white text-left text-[16px] lg:text-[22px]`}
-                >
-                  The Genius Actor’s Aura
-                </h2>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="manga-card ">
-                <Image src={"/img1.jpg"} alt="img" width={290} height={400} />
-                <h2
-                  className={` ${alata.className}  text-white text-left text-[16px] lg:text-[22px]`}
-                >
-                  The Genius Actor’s Aura
-                </h2>
-              </div>
-            </SwiperSlide>
+            {slides.map((slide, index) => (
+              <SwiperSlide key={index}>
+                <div className="manga-card">
+                  <Image src={slide.src} alt="img" width={290} height={400} />
+                  <h2
+                    className={`${alata.className} text-white text-left text-[16px] lg:text-[22px]`}
+                  >
+                    {slide.title}
+                  </h2>
+                </div>
+              </SwiperSlide>
+            ))}
           </Swiper>
           <div className="swiper-Btns flex justify-between absolute z-10 w-full lg:top-[50%] lg:translate-y-[-50%]">
-            <button className="swiper-nextBTN absolute right-[0]  cursor-pointer">
+            <button className="swiper-nextBTN absolute right-[0] cursor-pointer">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
