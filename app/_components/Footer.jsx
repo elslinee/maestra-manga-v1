@@ -13,8 +13,8 @@ const Footer = () => {
         </div>
 
         <p className="mx-auto my-6 max-w-md text-center leading-relaxed text-gray-500 dark:text-gray-400">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt
-          consequuntur amet culpa cum itaque neque.
+          موقع مايسترا مانجا، هنا ننشر أفضل وأعظم الأعمال اليابانية والكورية
+          والصينية مُترجمة للغة العربية خصيصًا لك.
         </p>
         <ul className="flex  items-center gap-10  lg:text-[22px] text-nowrap  justify-center">
           <li>
