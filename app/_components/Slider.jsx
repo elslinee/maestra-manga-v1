@@ -35,7 +35,7 @@ function Slider() {
               prevEl: ".swiper-prevBTN",
             }}
             autoplay={{
-              delay: 1000,
+              delay: 2000,
             }}
             loop={true}
             modules={[Pagination, Navigation, Autoplay]}
@@ -50,7 +50,7 @@ function Slider() {
                 slidesPerView: 5,
               },
             }}
-            className="mySwiper"
+            className="mySwiper mySwiperSlider"
           >
             {slides.map((slide, index) => (
               <SwiperSlide key={index}>
