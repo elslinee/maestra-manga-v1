@@ -5,7 +5,7 @@ import SectionTitle from "./SectionTitle";
 const alata = Alata({ subsets: ["latin"], weight: "400" });
 function MangaList() {
   return (
-    <section className="manga-list  bg-background">
+    <section className="manga-list  ">
       <SectionTitle title={"آخـر الإصــدارات"} />
       <div className="container lg:w-[75%]">
         <div className="cards-list grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8">

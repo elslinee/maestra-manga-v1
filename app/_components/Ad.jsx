@@ -8,7 +8,7 @@ import "swiper/css";
 
 function Ad() {
   return (
-    <section className="ad-wall bg-background lg:pt-14">
+    <section className="ad-wall  lg:pt-14">
       <div className="container ">
         <div className="main-slider   relative">
           <Swiper

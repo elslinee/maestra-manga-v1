@@ -4,7 +4,7 @@ import React from "react";
 
 function Header() {
   return (
-    <header className="bg-background h-24 lg:h-28 border-b-[2px] border-black">
+    <header className=" h-24 lg:h-28 border-b-[2px] border-black">
       <div className="container h-full flex justify-between">
         <div className="logo flex  h-full items-center  ">
           <a className="block lg:ml-12" href="#">

@@ -23,7 +23,7 @@ function Slider() {
   ];
 
   return (
-    <section className="bg-background py-14 lg:py-28">
+    <section className=" py-14 lg:py-28">
       <SectionTitle title={"الأعمال الرائجة"} />
       <div className="container">
         <div className="slider relative">
