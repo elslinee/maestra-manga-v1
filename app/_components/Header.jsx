@@ -1,10 +1,47 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 function Header() {
+  const navLinks = [
+    {
+      name: "الرئيسية",
+      href: "/",
+    },
+    {
+      name: "قائمة الأعمال",
+      href: "/manga_list",
+    },
+    {
+      name: "من نحن",
+      href: "/about_us",
+    },
+    {
+      name: "الإنضمام لنا",
+      href: "/join_us",
+    },
+    {
+      name: "المُفضلة",
+      href: "/favorite",
+    },
+    {
+      name: "إدعمنا",
+      href: "/support_us",
+    },
+  ];
+  const pathName = usePathname();
+  console.log(pathName);
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      const header = document.querySelector("header");
+      header.classList.toggle("activeHeader", window.scrollY > 0);
+    });
+  }, []);
   return (
-    <header className=" h-24 lg:h-28 border-b-[2px] border-black">
+    <header className="tr-4 z-[1000] w-full  top-0 right-0 fixed h-24 lg:h-28  ">
       <div className="container h-full flex justify-between">
         <div className="logo flex  h-full items-center  ">
           <a className="block lg:ml-12" href="#">
@@ -12,73 +49,20 @@ function Header() {
           </a>
           <nav aria-label="Global" className="hidden lg:block">
             <ul className="flex items-center gap-10  lg:text-[22px] text-nowrap ">
-              <li>
-                <Link
-                  className="text-white transition hover:text-primary  "
-                  href="/"
-                >
-                  الرئيسية
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="text-white transition hover:text-primary  "
-                  href="/"
-                >
-                  قائمة الأعمال
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  className="text-white transition hover:text-primary "
-                  href="/"
-                >
-                  من نحن
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="text-white transition hover:text-primary "
-                  href="/"
-                >
-                  الإنضمام لنا
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="text-white transition hover:text-primary "
-                  href="/"
-                >
-                  المُفضلة
-                </Link>
-              </li>
-              <li className="">
-                <Link
-                  className="text-white transition hover:text-primary items-center  flex gap-1"
-                  href="/"
-                >
-                  إدعمنا
-                  {/* <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="size-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-                    />
-                  </svg> */}
-                </Link>
-              </li>
+              {navLinks.map((link) => {
+                const isActive =
+                  pathName === link.href ||
+                  (pathName.startsWith(link.href) && link.href !== "/");
+                return (
+                  <li key={link.name} className={isActive ? "active" : " "}>
+                    <Link href={link.href}>{link.name}</Link>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
         </div>
-        <div className="searchLabel relative flex justify-center items-center  w-[300px]  ">
+        <div className="searchLabel lg:flex relative  hidden justify-center items-center  w-[300px]  ">
           <div className="flex gap-4 items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -132,14 +116,28 @@ function Header() {
             />
           </svg> */}
         </div>
-        <div className="menu lg:hidden  h-full flex justify-center items-center">
+        <div className="menu lg:hidden  h-full flex gap-4 justify-center items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
-            stroke="white"
-            className="size-10 cursor-pointer"
+            stroke="currentColor"
+            className="size-11 cursor-pointer text-white transition hover:text-primary"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m15.75 15.75-2.489-2.489m0 0a3.375 3.375 0 1 0-4.773-4.773 3.375 3.375 0 0 0 4.774 4.774ZM21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+            className="size-10 cursor-pointer text-white transition hover:text-primary"
           >
             <path
               strokeLinecap="round"

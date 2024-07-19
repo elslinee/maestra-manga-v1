@@ -4,15 +4,15 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="">
-      <div className="   py-28 sm:px-14 ">
+    <footer className="py-28 sm:px-14 ">
+      <div className="   container">
         <div className="flex justify-center">
           <a className="block " href="#">
             <Image src={"/logo.svg"} alt={"logo"} width={150} height={150} />
           </a>
         </div>
 
-        <p className="mx-auto my-6 max-w-md text-center leading-relaxed text-gray-500 dark:text-gray-400">
+        <p className="mx-auto text-[13px] my-6 max-w-md text-center leading-relaxed text-gray-500 dark:text-gray-400">
           موقع مايسترا مانجا، هنا ننشر أفضل وأعظم الأعمال اليابانية والكورية
           والصينية مُترجمة للغة العربية خصيصًا لك.
         </p>

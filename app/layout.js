@@ -37,6 +37,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ar">
       <head>
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
         <link rel="icon" type="image/svg" sizes="32x32" href="/ico.svg" />
       </head>
       <body className={cairo.className}>

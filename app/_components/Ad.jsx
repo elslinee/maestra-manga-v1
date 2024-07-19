@@ -8,7 +8,7 @@ import "swiper/css";
 
 function Ad() {
   return (
-    <section className="ad-wall  lg:pt-14">
+    <section className="ad-wall  lg:pt-[9.5rem] pt-[7.5rem] ">
       <div className="container ">
         <div className="main-slider   relative">
           <Swiper
@@ -17,9 +17,9 @@ function Ad() {
               prevEl: ".swiper-prevBTN2",
             }}
             autoplay={{
-                delay: 4000,
-              }}
-              loop={true}
+              delay: 4000,
+            }}
+            loop={true}
             modules={[Autoplay, Navigation]}
             className="mySwiper mySwiper2 w-[!80%]"
           >
