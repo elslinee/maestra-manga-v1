@@ -104,7 +104,7 @@ function MangaList() {
           {mangaList?.map((card) => (
             <div className="manga-card flex flex-col ">
               <Image
-                src={card?.cover?.data?.attributes?.url}
+                src={card?.attributes?.cover?.data?.attributes?.url}
                 alt="img"
                 width={290}
                 height={400}
