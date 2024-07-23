@@ -108,17 +108,18 @@ function MangaList() {
                 alt="img"
                 width={290}
                 height={400}
+                className="h-[280px] w-[200px]a"
               />
               <h2
                 className={` ${alata.className}  line-clamp-1 text-ltr text-white text-left text-[16px] lg:text-[22px]`}
               >
                 {card?.attributes?.title}
               </h2>
-              <span
-                className={` ${alata.className}  line-clamp-1 text-white text-left text-[16px] lg:text-[20px]`}
+              {/* <span
+                className={` ${alata.className}  line-clamp-1 text-ltr text-white text-left text-[16px] lg:text-[20px]`}
               >
                 Chapter: {""}
-              </span>
+              </span> */}
             </div>
           ))}
         </div>
