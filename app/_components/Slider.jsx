@@ -47,7 +47,7 @@ function Slider() {
                 slidesPerView: 3,
               },
               1024: {
-                slidesPerView: 5,
+                slidesPerView: 6,
               },
             }}
             className="mySwiper mySwiperSlider"
