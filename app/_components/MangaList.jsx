@@ -1,22 +1,14 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Alata } from "next/font/google";
 import Image from "next/image";
 import SectionTitle from "./SectionTitle";
 import mangaListApis from "../_utils/mangaListApis";
+import { MangaListContext } from "../_context/MangaListContext";
 const alata = Alata({ subsets: ["latin"], weight: "400" });
 function MangaList() {
-  const [mangaList, setMangaList] = useState();
-
-  useEffect(() => {
-    getMangaList_();
-  }, []);
-  const getMangaList_ = () => {
-    mangaListApis.getMangaList().then((res) => {
-      setMangaList(res?.data?.data);
-    });
-  };
+  const { mangaList, setMangaList } = useContext(MangaListContext);
 
   // const mangaList = [
   //   {
@@ -99,27 +91,27 @@ function MangaList() {
   return (
     <section className="manga-list  ">
       <SectionTitle title={"آخـر الإصــدارات"} />
-      <div className="container lg:w-[75%]">
-        <div className="cards-list grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8">
+      <div className="container ]">
+        <div className="cards-list gap-8 grid grid-cols-2  sm:grid-cols-3  lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5  ">
           {mangaList?.map((card) => (
-            <div className="manga-card flex flex-col ">
-              <Image
-                src={card?.attributes?.cover?.data?.attributes?.url}
-                alt="img"
-                width={290}
-                height={400}
-                className="h-[280px] w-[200px]a"
-              />
+            <div className="manga-card flex flex-col cursor-pointer  ">
+              <div className="img-container max-w-[260px] lg:h-[385px] h-[280px]  overflow-hidden  ">
+                <img
+                  src={card?.attributes?.cover?.data?.attributes?.url}
+                  alt="img"
+                  className="w-full h-full "
+                />
+              </div>
               <h2
                 className={` ${alata.className}  line-clamp-1 text-ltr text-white text-left text-[16px] lg:text-[22px]`}
               >
                 {card?.attributes?.title}
               </h2>
               {/* <span
-                className={` ${alata.className}  line-clamp-1 text-ltr text-white text-left text-[16px] lg:text-[20px]`}
-              >
-                Chapter: {""}
-              </span> */}
+              className={` ${alata.className}  line-clamp-1 text-ltr text-white text-left text-[16px] lg:text-[20px]`}
+            >
+              Chapter: {""}
+            </span> */}
             </div>
           ))}
         </div>

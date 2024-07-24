@@ -6,21 +6,13 @@ import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import Image from "next/image";
 import SectionTitle from "./SectionTitle";
 import { Alata } from "next/font/google";
+import { useContext } from "react";
+import { MangaListContext } from "../_context/MangaListContext";
 
 const alata = Alata({ subsets: ["latin"], weight: "400" });
 
 function Slider() {
-  const slides = [
-    { src: "/img1.jpg", title: "The Genius Actor’s Aura" },
-    { src: "/img2.jpg", title: "The Genius Actor’s Aura" },
-    { src: "/img2.jpg", title: "The Genius Actor’s Aura" },
-    { src: "/img2.jpg", title: "The Genius Actor’s Aura" },
-    { src: "/img2.jpg", title: "The Genius Actor’s Aura" },
-    { src: "/img2.jpg", title: "The Genius Actor’s Aura" },
-    { src: "/img2.jpg", title: "The Genius Actor’s Aura" },
-    { src: "/img2.jpg", title: "The Genius Actor’s Aura" },
-    // Add more slides as needed
-  ];
+  const { mangaList, setMangaList } = useContext(MangaListContext);
 
   return (
     <section className=" py-14 lg:py-28">
@@ -35,7 +27,7 @@ function Slider() {
               prevEl: ".swiper-prevBTN",
             }}
             autoplay={{
-              delay: 2000,
+              delay: 7000,
             }}
             loop={true}
             modules={[Pagination, Navigation, Autoplay]}
@@ -47,20 +39,37 @@ function Slider() {
                 slidesPerView: 3,
               },
               1024: {
+                slidesPerView: 4,
+              },
+              1280: {
+                slidesPerView: 5,
+              },
+              1540: {
                 slidesPerView: 6,
               },
             }}
             className="mySwiper mySwiperSlider"
           >
-            {slides.map((slide, index) => (
+            {mangaList.map((slide, index) => (
               <SwiperSlide key={index}>
-                <div className="manga-card">
-                  <Image src={slide.src} alt="img" width={290} height={400} />
+                <div className="manga-card flex flex-col cursor-pointer  ">
+                  <div className="img-container lg:min-w-[200px] h-[280px]  ">
+                    <img
+                      src={slide?.attributes?.cover?.data?.attributes?.url}
+                      alt="img"
+                      className="w-full "
+                    />
+                  </div>
                   <h2
-                    className={`${alata.className} text-white text-left text-[16px] lg:text-[22px]`}
+                    className={` ${alata.className}  line-clamp-1 text-ltr text-white text-left text-[16px] lg:text-[22px]`}
                   >
-                    {slide.title}
+                    {slide?.attributes?.title}
                   </h2>
+                  {/* <span
+                className={` ${alata.className}  line-clamp-1 text-ltr text-white text-left text-[16px] lg:text-[20px]`}
+              >
+                Chapter: {""}
+              </span> */}
                 </div>
               </SwiperSlide>
             ))}

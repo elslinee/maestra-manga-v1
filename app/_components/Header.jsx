@@ -16,16 +16,12 @@ function Header() {
       href: "/manga_list",
     },
     {
-      name: "من نحن",
-      href: "/about_us",
+      name: "المُفضلة",
+      href: "/favorite",
     },
     {
       name: "الإنضمام لنا",
       href: "/join_us",
-    },
-    {
-      name: "المُفضلة",
-      href: "/favorite",
     },
     {
       name: "إدعمنا",
