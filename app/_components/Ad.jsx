@@ -12,6 +12,7 @@ function Ad() {
       <div className="container ">
         <div className="main-slider   relative">
           <Swiper
+            spaceBetween={30}
             navigation={{
               nextEl: ".swiper-nextBTN2",
               prevEl: ".swiper-prevBTN2",
@@ -21,7 +22,7 @@ function Ad() {
             }}
             loop={true}
             modules={[Autoplay, Navigation]}
-            className="mySwiper mySwiper2 w-[!80%]"
+            className="mySwiper mySwiper2 w-[!80%] "
           >
             <SwiperSlide>
               <Image

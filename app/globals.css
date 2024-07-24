@@ -56,7 +56,6 @@ body::after {
 .mySwiperSlider {
   width: 90% !important;
   height: 100% !important;
-  background: #121318 !important;
 }
 .mySwiper2 {
   width: 90% !important;
@@ -65,7 +64,6 @@ body::after {
 .swiper-slide {
   text-align: center !important;
   font-size: 18px !important;
-  background: #121318 !important;
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
@@ -76,7 +74,6 @@ body::after {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
-  background: #121318 !important;
 }
 .section-title::after,
 .section-title::before {
