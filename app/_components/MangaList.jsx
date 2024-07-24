@@ -95,7 +95,7 @@ function MangaList() {
         <div className="cards-list gap-8 grid grid-cols-2  sm:grid-cols-3  lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5  ">
           {mangaList?.map((card) => (
             <div className="manga-card flex flex-col cursor-pointer  ">
-              <div className="img-container max-w-[260px] lg:h-[385px] h-[280px]  overflow-hidden  ">
+              <div className="img-container lg:h-[385px] h-[280px]  overflow-hidden  ">
                 <img
                   src={card?.attributes?.cover?.data?.attributes?.url}
                   alt="img"
