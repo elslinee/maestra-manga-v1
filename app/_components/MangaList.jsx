@@ -122,7 +122,7 @@ function MangaList() {
               <span className=" text-white px-3 py-[2px]  font-bold bg-red-900 text-[18px]">
                 الفصل
               </span>
-              <span className="block text-white  mb-4 px-3 text-[20px]">
+              <span className="block text-white   px-3 text-[20px]">
                 {chapter}
               </span>
             </div>

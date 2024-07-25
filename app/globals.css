@@ -52,12 +52,16 @@ body::after {
   width: 100%;
   height: 100%;
 }
+.swiper:hover .swiper-Btns {
+  opacity: 1;
+}
 .mySwiperSlider {
-  width: 90% !important;
+  width: 100% !important;
   height: 100% !important;
 }
+
 .mySwiper2 {
-  width: 90% !important;
+  width: 100% !important;
 }
 
 .swiper-slide {
@@ -164,16 +168,20 @@ header::after {
 header.activeHeader::after {
   height: 100%;
 }
-.manga-list-section .cards .card .overlay {
-  
-}
-
-.manga-list-section .cards .card .overlay {
-
-}
-
 .manga-list-section .cards .card {
+  overflow: hidden;
   transition: 0.4s ease;
+}
+.manga-list-section .cards .card:after {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 50px;
+  background: rgba(97, 31, 159, 0);
+  border-radius: 100px;
+  box-shadow: #54218385 -18px -20px 20px 20px;
+  right: -60px;
+  bottom: -52px;
 }
 .manga-list-section .cards .card img {
   transition: 0.4s ease;
