@@ -48,6 +48,12 @@ export default function RootLayout({ children }) {
         <head>
           <title>{metadata.title}</title>
           <meta name="description" content={metadata.description} />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Alata&display=swap"
+            rel="stylesheet"
+          />
           <link rel="icon" type="image/svg" sizes="32x32" href="/ico.svg" />
         </head>
         <body className={cairo.className}>

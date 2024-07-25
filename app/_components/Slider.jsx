@@ -51,27 +51,7 @@ function Slider() {
             className="mySwiper mySwiperSlider"
           >
             {mangaList.map((slide, index) => (
-              <SwiperSlide key={index}>
-                <div className="manga-card flex flex-col cursor-pointer  ">
-                  <div className="img-container lg:min-w-[200px] h-[280px]  ">
-                    <img
-                      src={slide?.attributes?.cover?.data?.attributes?.url}
-                      alt="img"
-                      className="w-full "
-                    />
-                  </div>
-                  <h2
-                    className={` ${alata.className}  line-clamp-1 text-ltr text-white text-left text-[16px] lg:text-[22px]`}
-                  >
-                    {slide?.attributes?.title}
-                  </h2>
-                  {/* <span
-                className={` ${alata.className}  line-clamp-1 text-ltr text-white text-left text-[16px] lg:text-[20px]`}
-              >
-                Chapter: {""}
-              </span> */}
-                </div>
-              </SwiperSlide>
+              <SwiperSlide key={index}></SwiperSlide>
             ))}
           </Swiper>
           <div className="swiper-Btns flex justify-between absolute z-10 w-full lg:top-[50%] lg:translate-y-[-50%]">

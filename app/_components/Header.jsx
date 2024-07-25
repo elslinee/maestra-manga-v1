@@ -58,7 +58,7 @@ function Header() {
             </ul>
           </nav>
         </div>
-        <div className="searchLabel lg:flex relative  hidden justify-center items-center  w-[300px]  ">
+        <div className="searchLabel lg:flex relative  hidden justify-end items-center  w-[300px]  ">
           <div className="flex gap-4 items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"

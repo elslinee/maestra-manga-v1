@@ -164,3 +164,20 @@ header::after {
 header.activeHeader::after {
   height: 100%;
 }
+.manga-list-section .cards .card .overlay {
+  
+}
+
+.manga-list-section .cards .card .overlay {
+
+}
+
+.manga-list-section .cards .card {
+  transition: 0.4s ease;
+}
+.manga-list-section .cards .card img {
+  transition: 0.4s ease;
+}
+.manga-list-section .cards .card:hover img {
+  scale: 1.1;
+}
