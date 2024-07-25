@@ -1,12 +1,13 @@
 "use client";
 
 import React, { useContext, useEffect, useState } from "react";
-import { Alata } from "next/font/google";
+import { Baloo_2 } from "next/font/google";
 import Image from "next/image";
 import SectionTitle from "./SectionTitle";
 import mangaListApis from "../_utils/mangaListApis";
 import { MangaListContext } from "../_context/MangaListContext";
-const alata = Alata({ subsets: ["latin"], weight: "400" });
+const baloo_2 = Baloo_2({ subsets: ["latin"] });
+
 function MangaList() {
   const { mangaList, setMangaList } = useContext(MangaListContext);
 
@@ -103,7 +104,7 @@ function MangaList() {
               {type}{" "}
             </span>
             <h3
-              className={`${alata.className}  text-ltr  text-white  text-[16px] line-clamp-3`}
+              className={`${baloo_2.className}  text-ltr  text-center text-white font-[700]  text-[16px] line-clamp-3`}
             >
               {title}
             </h3>
@@ -122,7 +123,9 @@ function MangaList() {
               <span className=" text-white px-3 py-[2px]  font-bold bg-red-900 text-[18px]">
                 الفصل
               </span>
-              <span className="block text-white   px-3 text-[20px]">
+              <span
+                className={`${baloo_2.className} block font-[500] text-white   px-3 text-[20px]`}
+              >
                 {chapter}
               </span>
             </div>

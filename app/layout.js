@@ -2,7 +2,7 @@
 
 import "swiper/css";
 import "swiper/css/navigation";
-import { Cairo, Alata } from "next/font/google";
+import { Cairo, Baloo_2 } from "next/font/google";
 import "./globals.css";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
@@ -12,7 +12,7 @@ import { MangaListContext } from "./_context/MangaListContext";
 import mangaListApis from "./_utils/mangaListApis";
 
 const cairo = Cairo({ subsets: ["arabic"] });
-const alata = Alata({ subsets: ["latin"], weight: "400" });
+const baloo_2 = Baloo_2({ subsets: ["latin"] });
 
 const metadata = {
   title: "مايسترا مانجا",
@@ -48,12 +48,6 @@ export default function RootLayout({ children }) {
         <head>
           <title>{metadata.title}</title>
           <meta name="description" content={metadata.description} />
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Alata&display=swap"
-            rel="stylesheet"
-          />
           <link rel="icon" type="image/svg" sizes="32x32" href="/ico.svg" />
         </head>
         <body className={cairo.className}>
