@@ -10,7 +10,7 @@ function Ad() {
   return (
     <section className="ad-wall  lg:pt-[9.5rem] pt-[7.5rem] ">
       <div className="container ">
-        <div className="main-slider   relative">
+        <div className="main-slider relative ">
           <Swiper
             spaceBetween={30}
             navigation={{
@@ -22,7 +22,7 @@ function Ad() {
             }}
             loop={true}
             modules={[Autoplay, Navigation]}
-            className="mySwiper mySwiper2 w-[100%]  rounded-[8px] "
+            className="mySwiper mySwiper2 w-[100%]  rounded-[8px] relative "
           >
             <SwiperSlide>
               <Image
@@ -40,8 +40,8 @@ function Ad() {
                 height={460}
               />
             </SwiperSlide>
-            <div className="   swiper-Btns opacity-0 tr-4 flex justify-between absolute z-10 w-full lg:top-[50%] lg:translate-y-[-50%]">
-              <button className="  swiper-nextBTN absolute right-[0] cursor-pointer bg-black/60 p-2  rounded-[100%] mr-2">
+            <div className="swiper-Btns opacity-0 tr-4 flex justify-between absolute z-10 w-full top-[50%] ">
+              <button className="  swiper-nextBTN absolute right-[0] cursor-pointer bg-black/60 p-2  rounded-[100%] mr-2 translate-y-[-50%]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -57,7 +57,7 @@ function Ad() {
                   />
                 </svg>
               </button>
-              <button className="swiper-prevBTN absolute left-0 cursor-pointer bg-black/60 p-2  rounded-[100%] ml-2">
+              <button className="swiper-prevBTN absolute left-0 cursor-pointer bg-black/60 p-2  rounded-[100%] ml-2 translate-y-[-50%]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

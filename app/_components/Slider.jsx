@@ -5,11 +5,12 @@ import "swiper/css/navigation";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import Image from "next/image";
 import SectionTitle from "./SectionTitle";
-import { Alata } from "next/font/google";
+import { Alata, Baloo_2 } from "next/font/google";
 import { useContext } from "react";
 import { MangaListContext } from "../_context/MangaListContext";
+import MangaCard from "./MangaCard";
 
-const alata = Alata({ subsets: ["latin"], weight: "400" });
+const baloo_2 = Baloo_2({ subsets: ["latin"] });
 
 function Slider() {
   const { mangaList, setMangaList } = useContext(MangaListContext);
@@ -22,36 +23,14 @@ function Slider() {
 
     return (
       <SwiperSlide key={card?.id}>
-        <div className="card relative w-full cursor-pointer  group">
-          <div className="overlay content-[''] absolute opacity-0 group-hover:opacity-100  bg-[rgba(0,_0,_0,_0.5)] w-full h-full left-[0] top-[0]  [transition:0.4s_ease] z-10 p-[16px] ">
-            <div className="flex flex-col h-full  justify-between items-center">
-              <span className=" text-black  rounded-[8px] py-1 px-2 bg-white text-[12px]">
-                {type}{" "}
-              </span>
-              <h3
-                className={`${alata.className}  text-ltr  text-white  text-[16px] line-clamp-3`}
-              >
-                {title}
-              </h3>
-            </div>
-          </div>
-          <div className="overlay2 content-[''] absolute opacity-100 group-hover:opacity-0  w-full h-full left-[0] top-[0]  [transition:0.4s_ease] z-10 p-[16px] ">
-            <div className="flex  h-full  justify-start items-start">
-              <span className=" text-white  rounded-[8px] py-1 px-3 bg-primary text-[12px]">
-                {state}
-              </span>
-            </div>
-          </div>
-          <div className=" rounded-[8px]    relative img-card sm:h-[290px] h-[320px] lg:h-[350px]  overflow-hidden">
-            <Image
-              src={Cover}
-              width={200}
-              height={300}
-              alt=""
-              className="object-cover w-full h-full "
-            />
-          </div>
-        </div>
+        <MangaCard
+          overly3={false}
+          Cover={Cover}
+          title={title}
+          type={type}
+          state={state}
+          chapter={chapter}
+        />
       </SwiperSlide>
     );
   });
@@ -93,8 +72,8 @@ function Slider() {
             className="mySwiper mySwiperSlider  "
           >
             {mangaList_}
-            <div className="   swiper-Btns opacity-0 tr-4 flex justify-between absolute z-10 w-full lg:top-[50%] lg:translate-y-[-50%]">
-              <button className="  swiper-nextBTN absolute right-[0] cursor-pointer bg-black/60 p-2  rounded-[100%] mr-2">
+            <div className="   swiper-Btns opacity-0 tr-4 flex justify-between absolute z-10 w-full top-[50%] ">
+              <button className="  swiper-nextBTN absolute right-[0] cursor-pointer bg-black/60 p-2  rounded-[100%] mr-2 translate-y-[-50%]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -110,7 +89,7 @@ function Slider() {
                   />
                 </svg>
               </button>
-              <button className="swiper-prevBTN absolute left-0 cursor-pointer bg-black/60 p-2  rounded-[100%] ml-2">
+              <button className="swiper-prevBTN absolute left-0 cursor-pointer bg-black/60 p-2  rounded-[100%] ml-2 translate-y-[-50%]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
