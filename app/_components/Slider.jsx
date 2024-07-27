@@ -6,24 +6,36 @@ import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import Image from "next/image";
 import SectionTitle from "./SectionTitle";
 import { Alata, Baloo_2 } from "next/font/google";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MangaListContext } from "../_context/MangaListContext";
 import MangaCard from "./MangaCard";
-
+import SkeletonSlider from "../_skeletonComponents/SkeletonSlider";
+import mangaListApis from "../_utils/mangaListApis";
 const baloo_2 = Baloo_2({ subsets: ["latin"] });
 
 function Slider() {
-  const { mangaList, setMangaList } = useContext(MangaListContext);
+  const [isLoading, setIsLoading] = useState(true);
+  const getMangaList_ = () => {
+    mangaListApis.getMangaList().then((res) => {
+      setMangaList(res?.data?.data), setIsLoading(false);
+    });
+  };
+  const [mangaList, setMangaList] = useState([]);
+  useEffect(() => {
+    getMangaList_();
+  }, []);
   const mangaList_ = mangaList.map((card) => {
     const Cover = card?.attributes?.cover?.data?.attributes?.url;
     const title = card?.attributes?.title;
     const type = card?.attributes?.type;
     const state = card?.attributes?.state;
+    const key = card?.id;
     const chapter = 3;
 
     return (
       <SwiperSlide key={card?.id}>
         <MangaCard
+          id={key}
           overly3={false}
           Cover={Cover}
           title={title}
@@ -36,10 +48,15 @@ function Slider() {
   });
 
   return (
-    <section className=" py-14 lg:py-28">
+    <section className=" py-14 lg:py-28 ">
       <SectionTitle title={"الأعمال الرائجة"} />
       <div className="container">
-        <div className="slider relative">
+        <div className="slider relative ">
+          {isLoading && (
+            <div className="   sm:h-[290px] h-[320px] lg:h-[350px] overflow-hidden  grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6  gap-4  ">
+              <SkeletonSlider cards={6} />
+            </div>
+          )}
           <Swiper
             slidesPerView={6}
             spaceBetween={15}
@@ -48,7 +65,7 @@ function Slider() {
               prevEl: ".swiper-prevBTN",
             }}
             autoplay={{
-              delay: 7000,
+              delay: 2000,
             }}
             loop={true}
             modules={[Pagination, Navigation, Autoplay]}

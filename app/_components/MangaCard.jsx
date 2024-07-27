@@ -2,10 +2,12 @@ import { Baloo_2 } from "next/font/google";
 import Image from "next/image";
 import React from "react";
 const baloo_2 = Baloo_2({ subsets: ["latin"] });
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 function MangaCard(props) {
   return (
-    <div className="card relative w-full cursor-pointer  group">
+    <div key={props.id} className="card relative w-full cursor-pointer  group">
       <div className="overlay content-[''] rounded-[8px] absolute opacity-0 group-hover:opacity-100  bg-[rgba(0,_0,_0,_0.5)] w-full h-full left-[0] top-[0]  [transition:0.4s_ease] z-10 p-[16px] ">
         <div className="flex flex-col h-full  justify-between items-center">
           <span className=" text-black  rounded-[8px] py-1 px-2 bg-white text-[12px]">
@@ -47,7 +49,7 @@ function MangaCard(props) {
           width={200}
           height={300}
           alt=""
-          className="object-cover w-full h-full "
+          className="object-cover w-full h-full bg-[#252525] "
         />
       </div>
     </div>

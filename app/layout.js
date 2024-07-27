@@ -10,6 +10,7 @@ import LoadingScreen from "./_components/LoadingScreen";
 import { useEffect, useState } from "react";
 import { MangaListContext } from "./_context/MangaListContext";
 import mangaListApis from "./_utils/mangaListApis";
+import { SkeletonTheme } from "react-loading-skeleton";
 
 const cairo = Cairo({ subsets: ["arabic"] });
 const baloo_2 = Baloo_2({ subsets: ["latin"] });
@@ -20,16 +21,9 @@ const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const [mangaList, setMangaList] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const getMangaList_ = () => {
-    mangaListApis.getMangaList().then((res) => {
-      setMangaList(res?.data?.data);
-    });
-  };
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
-    getMangaList_();
-    /////////////////
     const handleWindowLoad = () => {
       setLoading(false);
     };
@@ -43,7 +37,7 @@ export default function RootLayout({ children }) {
     };
   }, []);
   return (
-    <MangaListContext.Provider value={{ mangaList, setMangaList }}>
+    <SkeletonTheme baseColor="#252525" highlightColor="#2f2f2f">
       <html lang="ar">
         <head>
           <title>{metadata.title}</title>
@@ -57,6 +51,6 @@ export default function RootLayout({ children }) {
           <Footer />
         </body>
       </html>
-    </MangaListContext.Provider>
+    </SkeletonTheme>
   );
 }

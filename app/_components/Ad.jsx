@@ -1,14 +1,43 @@
 "use client";
 
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation, Autoplay } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
+
 import "swiper/css";
+import adsApis from "../_utils/adsApis";
+import SkeletonAD from "../_skeletonComponents/SkeletonAD";
 
 function Ad() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [adsList, setAdsList] = useState([]);
+  const getADS_ = () => {
+    adsApis.getADS().then((res) => {
+      setAdsList(res.data.data), setIsLoading(false);
+    });
+  };
+  useEffect(() => {
+    getADS_();
+  }, []);
+
+  const adsList_ = adsList.map((ad) => {
+    const img = ad?.attributes?.image?.data[0]?.attributes?.url;
+
+    return (
+      <SwiperSlide key={ad?.id} width={1300} height={460}>
+        <Image
+          src={img}
+          alt="ad-wall"
+          width={1300}
+          height={460}
+          className="bg-[#252525]"
+        />
+      </SwiperSlide>
+    );
+  });
   return (
-    <section className="ad-wall  lg:pt-[9.5rem] pt-[7.5rem] ">
+    <section className="ad-wall  lg:pt-[9.5rem] pt-[7.5rem] \ ">
       <div className="container ">
         <div className="main-slider relative ">
           <Swiper
@@ -24,22 +53,8 @@ function Ad() {
             modules={[Autoplay, Navigation]}
             className="mySwiper mySwiper2 w-[100%]  rounded-[8px] relative "
           >
-            <SwiperSlide>
-              <Image
-                src={"/ad_wall.jpg"}
-                alt="ad-wall"
-                width={1300}
-                height={460}
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Image
-                src={"/ad_wall.jpg"}
-                alt="ad-wall"
-                width={1300}
-                height={460}
-              />
-            </SwiperSlide>
+            {isLoading && <SkeletonAD cards={1} />}
+            {adsList_}
             <div className="swiper-Btns opacity-0 tr-4 flex justify-between absolute z-10 w-full top-[50%] ">
               <button className="  swiper-nextBTN absolute right-[0] cursor-pointer bg-black/60 p-2  rounded-[100%] mr-2 translate-y-[-50%]">
                 <svg
