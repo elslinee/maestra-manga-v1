@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { MangaListContext } from "./_context/MangaListContext";
 import mangaListApis from "./_utils/mangaListApis";
 import { SkeletonTheme } from "react-loading-skeleton";
+// import Transition from "./_components/";
 
 const cairo = Cairo({ subsets: ["arabic"] });
 const baloo_2 = Baloo_2({ subsets: ["latin"] });
@@ -21,21 +22,7 @@ const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const handleWindowLoad = () => {
-      setLoading(false);
-    };
-    if (document.readyState === "complete") {
-      setLoading(false);
-    } else {
-      window.addEventListener("load", handleWindowLoad);
-    }
-    return () => {
-      window.removeEventListener("load", handleWindowLoad);
-    };
-  }, []);
+  useEffect(() => {}, []);
   return (
     <SkeletonTheme baseColor="#252525" highlightColor="#2f2f2f">
       <html lang="ar">
@@ -45,9 +32,10 @@ export default function RootLayout({ children }) {
           <link rel="icon" type="image/svg" sizes="32x32" href="/ico.svg" />
         </head>
         <body className={cairo.className}>
-          {loading && <LoadingScreen />}
+          <LoadingScreen />
           <Header />
           {children}
+
           <Footer />
         </body>
       </html>

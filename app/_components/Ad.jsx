@@ -37,7 +37,7 @@ function Ad() {
     );
   });
   return (
-    <section className="ad-wall  lg:pt-[9.5rem] pt-[7.5rem] \ ">
+    <section className="ad-wall  lg:pt-[9.5rem] pt-[7.5rem]  ">
       <div className="container ">
         <div className="main-slider relative ">
           <Swiper

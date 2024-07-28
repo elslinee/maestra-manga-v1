@@ -7,9 +7,9 @@ function SkeletonAD({ cards }) {
   return Array(cards)
     .fill(0)
     .map((item, index) => (
-      <div key={index}>
-        <div>
-          <Skeleton height={460} />
+      <div key={index} className="">
+        <div className="h-[150px] sm:h-[250px]  lg:h-[350px] xl:h-[450px] 2xl:h-[550px] ">
+          <Skeleton height={"100%"} />
         </div>
       </div>
     ));
