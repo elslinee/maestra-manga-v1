@@ -141,6 +141,7 @@ function manga_list() {
   //   });
   // };
   const getAllMangaList_ = (typesApi, colorsApi, categoriesApi) => {
+    setMangaList([]);
     setIsLoading(true);
     categoriesApis
       .getAllMangaList(typesApi, colorsApi, categoriesApi)
@@ -168,8 +169,12 @@ function manga_list() {
 
       <div className="flex flex-col-reverse justify-center 2xl:flex-row 2xl:justify-start 2xl:pt-4  ">
         <div className="mangaList_  2xl:w-[75%]    col-span-8 px-8 m-0 ">
-          <div className="cards grid grid-cols-1  lg:grid-cols-2 2xl:grid-cols-3    lg:gap-10 gap-5 ">
+          <div className="cards  hidden md:grid lg:grid  lg:grid-cols-2 2xl:grid-cols-3    lg:gap-10 gap-5 ">
             {isLoading && <SkeletonCard2 cards={15} />}
+            {mangaList_}
+          </div>
+          <div className="cards  grid grid-cols-1 md:hidden lg:hidden  gap-5 ">
+            {isLoading && <SkeletonCard2 cards={1} />}
             {mangaList_}
           </div>
         </div>

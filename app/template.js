@@ -14,7 +14,7 @@ export default function Template({ children }) {
   // </motion.div>
   return (
     <AnimatePresence mode="wait">
-      {/* <RouteScreen /> */}
+      <RouteScreen />
       <motion.div key={pathname}>{children}</motion.div>;
     </AnimatePresence>
   );
