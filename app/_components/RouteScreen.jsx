@@ -6,31 +6,30 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
-function LoadingScreen() {
+function RouteScreen() {
   useGSAP(
     () => {
       const tl = gsap.timeline();
-      tl.to(".loading-screen .logo_white", {
+      tl.to(".route-screen .logo_white", {
         opacity: 1,
       })
-        .from(".loading-screen img", {
+        .from(".route-screen img", {
           y: 100,
         })
-        .to(".loading-screen .logo_purple", {
+        .to(".route-screen .logo_purple", {
           opacity: 1,
         })
-        .to(".loading-screen", {
+        .to(".route-screen", {
           opacity: 0,
           zIndex: 0,
           display: "none",
-          delay: 0.5,
         });
     },
     {},
     []
   );
   return (
-    <div className="loading-screen bg-background h-screen w-screen flex justify-center items-center   z-[10000]  fixed">
+    <div className="route-screen bg-background h-screen w-screen flex justify-center items-center   z-[10000] overflow-hidden  fixed">
       <Image
         className="logo_purple flex justify-center items-center  opacity-0 absolute z-10"
         src={"/logo.svg"}
@@ -49,4 +48,4 @@ function LoadingScreen() {
   );
 }
 
-export default LoadingScreen;
+export default RouteScreen;

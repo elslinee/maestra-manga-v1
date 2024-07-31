@@ -7,6 +7,7 @@ import Ad from "./_components/Ad";
 
 export default function Home() {
   return (
+    
     <main>
       <Ad />
       <Slider />

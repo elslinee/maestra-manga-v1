@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { MangaListContext } from "./_context/MangaListContext";
 import mangaListApis from "./_utils/mangaListApis";
 import { SkeletonTheme } from "react-loading-skeleton";
+import { AnimatePresence } from "framer-motion";
 // import Transition from "./_components/";
 
 const cairo = Cairo({ subsets: ["arabic"] });
@@ -32,7 +33,6 @@ export default function RootLayout({ children }) {
           <link rel="icon" type="image/svg" sizes="32x32" href="/ico.svg" />
         </head>
         <body className={cairo.className}>
-          <LoadingScreen />
           <Header />
           {children}
 

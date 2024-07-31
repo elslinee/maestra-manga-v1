@@ -56,7 +56,7 @@ function Ad() {
             {isLoading && <SkeletonAD cards={1} />}
             {adsList_}
             <div className="swiper-Btns opacity-0 tr-4 flex justify-between absolute z-10 w-full top-[50%] ">
-              <button className="  swiper-nextBTN absolute right-[0] cursor-pointer bg-black/60 p-2  rounded-[100%] mr-2 translate-y-[-50%]">
+              <button className="  swiper-nextBTN2 absolute right-[0] cursor-pointer bg-black/60 p-2  rounded-[100%] mr-2 translate-y-[-50%]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -72,7 +72,7 @@ function Ad() {
                   />
                 </svg>
               </button>
-              <button className="swiper-prevBTN absolute left-0 cursor-pointer bg-black/60 p-2  rounded-[100%] ml-2 translate-y-[-50%]">
+              <button className="swiper-prevBTN2 absolute left-0 cursor-pointer bg-black/60 p-2  rounded-[100%] ml-2 translate-y-[-50%]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
