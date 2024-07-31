@@ -1,6 +1,6 @@
 "use client";
 import { animate, AnimatePresence, motion } from "framer-motion";
-import RouteScreen from "./_components/routeScreen";
+import RouteScreen from "./_components/RouteScreen";
 import { usePathname } from "next/navigation";
 export default function Template({ children }) {
   const pathname = usePathname();

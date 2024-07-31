@@ -5,6 +5,7 @@ import SectionTitle from "../_components/SectionTitle";
 import Image from "next/image";
 import mangaListApis from "../_utils/mangaListApis";
 import categoriesApis from "../_utils/categoriesApis";
+import SkeletonCard2 from "../_skeletonComponents/SkeletonCard2";
 
 function manga_list() {
   const [isLoading, setIsLoading] = useState(true);
@@ -95,7 +96,7 @@ function manga_list() {
             {story}
           </p>
         </div>
-        <div className="flex-1 relative img-card sm:h-[500px] h-[320px] lg:h-[330px] rounded-[8px] overflow-hidden">
+        <div className="flex-1  relative img-card sm:h-[500px] h-[320px] lg:h-[330px] 2xl:h-full rounded-[8px] overflow-hidden">
           <Image
             src={Cover}
             alt="cover"
@@ -140,12 +141,13 @@ function manga_list() {
   //   });
   // };
   const getAllMangaList_ = (typesApi, colorsApi, categoriesApi) => {
+    setIsLoading(true);
     categoriesApis
       .getAllMangaList(typesApi, colorsApi, categoriesApi)
       .then((res) => {
-        console.log(res?.data?.data);
         setMangaList([]);
         setMangaList(res?.data?.data || []);
+        setIsLoading(false);
       });
   };
 
@@ -166,11 +168,11 @@ function manga_list() {
 
       <div className="flex flex-col-reverse justify-center 2xl:flex-row 2xl:justify-start 2xl:pt-4  ">
         <div className="mangaList_  2xl:w-[75%]    col-span-8 px-8 m-0 ">
-          <div className="cards grid grid-cols-1  lg:grid-cols-2 xl:grid-cols-3    lg:gap-10 gap-5 ">
+          <div className="cards grid grid-cols-1  lg:grid-cols-2 2xl:grid-cols-3    lg:gap-10 gap-5 ">
+            {isLoading && <SkeletonCard2 cards={15} />}
             {mangaList_}
           </div>
         </div>
-
         <div className="categories_list    text-[16px]   2xl:max-w-[430px]  2xl:fixed px-8 left-0">
           <h3 className="text-white  font-semibold text-2xl text-center mb-4">
             التصنيفات

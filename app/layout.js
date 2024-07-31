@@ -23,7 +23,6 @@ const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  useEffect(() => {}, []);
   return (
     <SkeletonTheme baseColor="#252525" highlightColor="#2f2f2f">
       <html lang="ar">
