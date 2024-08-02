@@ -16,10 +16,6 @@ function Header() {
       href: "/manga_list",
     },
     {
-      name: "المُفضلة",
-      href: "/favorite",
-    },
-    {
       name: "الإنضمام لنا",
       href: "/join_us",
     },

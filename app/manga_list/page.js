@@ -6,11 +6,15 @@ import Image from "next/image";
 import mangaListApis from "../_utils/mangaListApis";
 import categoriesApis from "../_utils/categoriesApis";
 import SkeletonCard2 from "../_skeletonComponents/SkeletonCard2";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 function manga_list() {
   const [isLoading, setIsLoading] = useState(true);
   const [mangaList, setMangaList] = useState([]);
-
   //
   const categories = [
     "الكل",
@@ -77,7 +81,8 @@ function manga_list() {
     const story = card?.attributes?.story[0]?.children[0]?.text;
     const chapter = 3;
     return (
-      <div
+      <Link
+        href={`/manga_list/${title}`}
         key={card?.id}
         className="card cursor-pointer group  relative  hover:grayscale-[1] tr-4 flex w-fit   items-start gap-4 "
       >
@@ -105,7 +110,7 @@ function manga_list() {
             className="object-cover w-full h-full bg-[#252525]  rounded-[8px] "
           />
         </div>
-      </div>
+      </Link>
     );
   });
   const getMangaList_ = () => {
@@ -117,29 +122,7 @@ function manga_list() {
   useEffect(() => {
     getMangaList_();
   }, []);
-  /// Fetch the initial manga list
-  // const getCategory_ = (category) => {
-  //   const categoriesApi = `&filters[categories][$containsi]=${category}`;
-  //   categoriesApis.getCategory(categoriesApi).then((res) => {
-  //     console.log(res?.data?.data);
-  //   });
-  // };
-  // const getColor_ = (color) => {
-  //   const colorsApi = `&filters[color][$eq]=${color}`;
-  //   categoriesApis.getColor(colorsApi).then((res) => {
-  //     console.log(res?.data?.data);
-  //     setMangaList([]);
-  //     setMangaList(res?.data?.data || []);
-  //   });
-  // };
-  // const getType_ = (type) => {
-  //   const typesApi = `&filters[type][$eq]=${type}`;
-  //   categoriesApis.getType(typesApi).then((res) => {
-  //     console.log(res?.data?.data);
-  //     setMangaList([]);
-  //     setMangaList(res?.data?.data || []);
-  //   });
-  // };
+
   const getAllMangaList_ = (typesApi, colorsApi, categoriesApi) => {
     setMangaList([]);
     setIsLoading(true);
@@ -163,8 +146,17 @@ function manga_list() {
       : categoriesApi;
     getAllMangaList_(typesApi, colorsApi, categoriesApi);
   };
+
+  useGSAP(() => {
+    gsap.from(".manga-list-page .mangaList_ .cards ", {
+      delay: 1.5,
+      opacity: 0,
+      y: 100,
+    });
+  });
+
   return (
-    <div className=" lg:pt-[9.5rem] pt-[7.5rem] text-white text-2xl">
+    <div className="manga-list-page lg:pt-[9.5rem] pt-[7.5rem] text-white text-2xl">
       <SectionTitle title={"قائمـة الأعمال"} />
 
       <div className="flex flex-col-reverse justify-center 2xl:flex-row 2xl:justify-start 2xl:pt-4  ">
@@ -187,7 +179,7 @@ function manga_list() {
               {types.map((type, index) => (
                 <div
                   key={index}
-                  className={` flex py-1 px-2 rounded-[8px] cursor-pointer  select-none ${
+                  className={` flex py-1 px-2 rounded-[8px] cursor-pointer  tr-4 select-none ${
                     selectedType === type ? "bg-primary" : "bg-black"
                   }`}
                 >
@@ -212,7 +204,7 @@ function manga_list() {
               {colors.map((color, index) => (
                 <div
                   key={index}
-                  className={` flex py-1 px-2 rounded-[8px] cursor-pointer  select-none ${
+                  className={` flex py-1 px-2 rounded-[8px] cursor-pointer tr-4 select-none ${
                     selectedColor === color ? "bg-primary" : "bg-black"
                   }`}
                 >
@@ -237,7 +229,7 @@ function manga_list() {
               {categories.map((category, index) => (
                 <div
                   key={index}
-                  className={` flex py-1 px-2 rounded-[8px] cursor-pointer  select-none ${
+                  className={` flex py-1 px-2 rounded-[8px] cursor-pointer tr-4 select-none ${
                     selectedCategories === category ? "bg-primary" : "bg-black"
                   }`}
                 >
@@ -263,7 +255,7 @@ function manga_list() {
           </div>
           <div className=" flex justify-center py-4">
             <button
-              className=" py-1 px-2  my-4 w-full  bg-primary rounded-[8px] cursor-pointer   select-none"
+              className=" py-1 px-2  my-4 w-full  tr-4 bg-primary  hover:bg-[#4e1881] rounded-[8px] cursor-pointer   select-none"
               onClick={() => handleCategoriesList(type, color, category)}
             >
               تصنيف

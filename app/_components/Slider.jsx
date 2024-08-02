@@ -48,7 +48,7 @@ function Slider() {
   });
 
   return (
-    <section className=" py-14 lg:py-28 ">
+    <section className="slider-section py-14 lg:py-28 ">
       <SectionTitle title={"الأعمال الرائجة"} />
       <div className="container">
         <div className="slider relative ">
