@@ -36,12 +36,12 @@ function chapter_page() {
   const chapterNumber_ = chapter?.chapter_number;
   const chapterPages_ = chapter?.pages?.data;
   // const chapterNumber_ = chapter.chapter_number;
-  const handleFullScreen = () => {
-    if(isFullScreen){  document.documentElement.requestFullscreen();}
-    if (isFullScreen) {
-    document.documentElement.requestFullscreen();
-    setIsFullScreen(true);
-  };
+  // const handleFullScreen = () => {
+  //   if(isFullScreen){  document.documentElement.requestFullscreen();}
+  //   if (isFullScreen) {
+  //   document.documentElement.requestFullscreen();
+  //   setIsFullScreen(true);
+  // };
   console.log(chapters);
   return (
     <div className="chapter-page lg:pt-[9.5rem] pt-[7.5rem] text-white">
