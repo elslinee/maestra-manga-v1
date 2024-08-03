@@ -27,7 +27,6 @@ function Header() {
   ];
   const pathName = usePathname();
 
-  console.log(document.fullscreenElement);
   const isFullscreen = useFullscreenStatus();
 
   // const isFullScreen = () => {
@@ -44,9 +43,6 @@ function Header() {
       const header = document.querySelector("header");
       header?.classList.toggle("activeHeader", window.scrollY > 0);
     });
-    if (isFullscreen) {
-      console.log("yes");
-    }
   }, []);
   return (
     <>
