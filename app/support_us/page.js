@@ -28,7 +28,7 @@ function page() {
   return (
     <div className="join_us-page lg:pt-[22rem] pt-[7.5rem] text-white text-2xl">
       <div className="container  ">
-        <div className="flex  z-[-1] relative   justify-between w-full items-center ">
+        <div className="flex   relative   justify-between w-full items-center ">
           <div className="img z-[4] absolute 2xl:block hidden right-0">
             <div className="img-holder z-[4]">
               <Image
@@ -42,14 +42,14 @@ function page() {
           </div>
           <div className="text  w-full  items-end flex flex-col ">
             <div className="w-full mb-3 z-[-1] py-6 px-12 gap-8 flex   2xl:justify-end justify-end rounded-[16px] bg-black/40  ">
-              <p className="xl:text-[28px]  text-[20px]     font-semibold    2xl:leading-[40px] leading-[40px] max-w-[880px]">
+              <p className="xl:text-[32px]  text-[20px]     font-semibold    2xl:leading-[50px] leading-[40px] max-w-[880px]">
                 يُسعدنا نحن فريق مايسترا أن نستمر في تقديم مُختلف الأعمال
                 الآسيوية مُترجمة ومُجهزة خصيصًا لكم يا مُحبي مايسترا المُخلصين.
                 سنبذل قصارى جهدنا لكي نستمر في تقديم الأفضل دائمًا، ويمكنك أن
                 تُساعدنا في ضمان استمراريتنا واستمرارية أعمالنا.
               </p>
             </div>
-            <div className="flex  relative  justify-end w-full 2xl:gap-4 items-center  bg-black/40  2xl:py-6 2xl:px-12 py-3  px-4 rounded-[16px] z-[-1]">
+            <div className="flex  relative  justify-end w-full 2xl:gap-4 items-center  bg-black/40  2xl:py-6 2xl:px-12 py-3  px-4 rounded-[16px] z-[1]">
               <div className="img  z-[4]  absolute 2xl:hidden block right-[-50px] bottom-[-250px]">
                 <div className="img-holder z-[4] ">
                   <Image
@@ -61,10 +61,10 @@ function page() {
                   />
                 </div>
               </div>
-              <span className="text-[#ffff]  text-[14px] 2xl:text-[28px]  flex max-w-[170px]  leading-[25px] lg:max-w-[100%]  items-center">
+              <span className="text-[#ffff]   text-[14px] 2xl:text-[25px]  flex max-w-[170px]  leading-[25px] lg:max-w-[100%]  items-center">
                 اي مساهمة منك ستصنع فرقًا مهمًا، يمكنك دعم الفريق من هنا :
               </span>
-              <a href="https://discord.gg/9GPk8HX3Ek">
+              <a href="https://Ko-fi.com/maestramanga" className=" ">
                 <Image
                   src="/kofi.png"
                   alt="discord"

@@ -6,6 +6,7 @@ import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import mangaListApis from "../../_utils/mangaListApis";
 import SkeletonManga from "../../_skeletonComponents/SkeletonManga";
+import Link from "next/link";
 const baloo_2 = Baloo_2({ subsets: ["latin"] });
 
 function manga_page() {
@@ -30,12 +31,13 @@ function manga_page() {
   const categories = manga?.attributes?.categories;
   const state = manga?.attributes?.state;
   const story = manga?.attributes?.story[0]?.children[0]?.text;
-  const chapter = 3;
+  // /  const story = manga?.attributes?.chapters.chapter_number/
+  const chapters = manga?.attributes?.chapters;
   useEffect(() => {
     getMangaByTitle_(manga_name);
   }, []);
   const { manga_name } = useParams();
-  console.log(manga);
+  console.log(chapters);
 
   return (
     <div className="manga-page lg:pt-[9.5rem] pt-[7.5rem] text-white text-2xl">
@@ -56,14 +58,16 @@ function manga_page() {
 
                 <div className="links lg:flex hidden flex-col  items-center w-full">
                   <a
-                    href=""
+                    target="_blank"
+                    href="https://Ko-fi.com/maestramanga"
                     className="bg-[#823237] text-nowrap font-semibold text-[20px] py-2 px-6 rounded-lg w-full "
                   >
                     قدم كوب قهوة للمُترجمين
                   </a>
                   <span className="text-[12px] font-medium">{`(الرجاء كتابة اسم العمل مع الهدية لضمان ايصالها)`}</span>
                   <a
-                    href=" "
+                    target="_blank"
+                    href="https://discord.gg/9GPk8HX3Ek"
                     className="bg-[#5a67ed] font-semibold text-[20px] py-2 px-6 rounded-lg w-full"
                   >
                     تواصل مع مترجمي العمل
@@ -232,15 +236,25 @@ function manga_page() {
           )}
         </div>
         <div className="secDiv mt-4 bg-black/50 rounded-lg p-10  flex   flex-wrap lg:justify-start justify-center gap-4 ">
-          <a
-            href=""
-            className="py-2 px-4 hover:bg-primary  tr-4 flex items-center justify-center gap-2 text-[18px] text-center  rounded-lg  bg-black text-white border-[1px] border-primary"
-          >
-            الفصل{" "}
-            <span className={`${baloo_2.className}  font-normal text-[24px]`}>
-              1
-            </span>
-          </a>
+          {chapters?.length === 0 ? (
+            <div className=" text-gray-300 text-center w-full text-[18px]">
+              لا يوجد فصول حتى الان
+            </div>
+          ) : (
+            chapters?.map((chapter) => (
+              <Link
+                href={`/manga_list/${title}/chapters/${chapter?.chapter_number}`}
+                className="py-2 px-4 hover:bg-primary  tr-4 flex items-center justify-center gap-2 text-[18px] text-center  rounded-lg  bg-black text-white border-[1px] border-primary"
+              >
+                الفصل{" "}
+                <span
+                  className={`${baloo_2.className}  font-normal text-[24px]`}
+                >
+                  {chapter.chapter_number}
+                </span>
+              </Link>
+            ))
+          )}
         </div>
       </div>
     </div>

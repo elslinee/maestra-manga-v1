@@ -62,7 +62,7 @@ function join_us() {
                   تابع حساب فريق مايسترا الرسمي من خلال منصة{" "}
                 </span>
                 <a
-                  href="https://discord.gg/9GPk8HX3Ek"
+                  href="https://instagram.com/maestramanga"
                   target="_blank"
                   className=" "
                 >
@@ -75,20 +75,6 @@ function join_us() {
                   />
                 </a>
               </div>
-              {/* <div className="flex bg-black/40  py-6 px-12 gap-8 rounded-[16px] mt-[12px]">
-                <span className="text-[#F901CE] h-[54px]  xl:text-[28px] text-[16px] flex  items-center">
-                  تابع حساب فريق مايسترا الرسمي من خلال منصة{" "}
-                </span>
-                <a href="https://discord.gg/9GPk8HX3Ek" target="_blank">
-                  <Image
-                    src="/insta.png"
-                    alt="discord"
-                    height={44}
-                    width={196}
-                    className="xl:h-[58px] xl:w-[196] h-[28px w-[66]"
-                  />
-                </a>
-              </div> */}
               <div className="img  absolute block xl:hidden left-[-25px] top-[-100px]">
                 <div className="img-holder ">
                   <Image

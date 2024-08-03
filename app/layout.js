@@ -34,7 +34,6 @@ export default function RootLayout({ children }) {
         <body className={cairo.className}>
           <Header />
           {children}
-
           <Footer />
         </body>
       </html>

@@ -36,7 +36,7 @@ function Header() {
     <header className="tr-4 z-[1000] w-full  top-0 right-0 fixed h-24 lg:h-28  ">
       <div className="container h-full flex justify-between">
         <div className="logo flex  h-full items-center  ">
-          <a className="block lg:ml-12" href="#">
+          <a className="block lg:ml-12" href="/">
             <Image src={"/logo.svg"} alt={"logo"} width={100} height={100} />
           </a>
           <nav aria-label="Global" className="hidden lg:block">
