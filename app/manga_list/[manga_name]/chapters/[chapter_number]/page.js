@@ -177,16 +177,13 @@ function chapter_page() {
           </div>
         </div>
 
-        <section className="chapter-pages flex flex-col justify-center container items-center sm:w-[70%] w-full my-14">
+        <section className="chapter-pages flex flex-col justify-center container items-center   my-14">
           {chapterPages_?.map((page) => {
             return (
-              <Image
+              <img
                 onClick={() => handleFullScreen()}
                 src={page?.attributes?.url}
                 alt="page"
-                width={500}
-                height={500}
-                className="w-full  h-full"
               />
             );
           })}
