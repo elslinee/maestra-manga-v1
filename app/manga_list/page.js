@@ -138,7 +138,7 @@ function manga_list() {
   const handleCategoriesList = (type, color, category) => {
     let typesApi = `&filters[type][$eq]=${type}`;
     let colorsApi = `&filters[color][$eq]=${color}`;
-    let categoriesApi = `&filters[categories][$containsi]=${category}`;
+    let categoriesApi = `&filter  s[categories][$containsi]=${category}`;
     type === "" || type === "الكل" ? (typesApi = "") : typesApi;
     color === "" || color === "الكل" ? (colorsApi = "") : colorsApi;
     category === "" || category === "الكل"

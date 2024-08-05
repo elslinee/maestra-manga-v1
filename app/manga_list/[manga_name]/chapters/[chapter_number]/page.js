@@ -85,7 +85,7 @@ function chapter_page() {
             className={`${baloo_2.className} text-white text-3xl font-semibold`}
           >
             {" "}
-            Dragon Ball Kakumei
+            {title}
           </Link>
         </div>
         <div className="relative dropDown mb-4 flex sm:hidden items-center  justify-center">

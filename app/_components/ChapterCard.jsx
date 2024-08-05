@@ -1,12 +1,11 @@
+import React from "react";
 import { Baloo_2 } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 const baloo_2 = Baloo_2({ subsets: ["latin"] });
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-
-function MangaCard(props) {
+function ChapterCard(props) {
   return (
     <Link href={`/manga_list/${props.title}`}>
       <div
@@ -62,4 +61,4 @@ function MangaCard(props) {
   );
 }
 
-export default MangaCard;
+export default ChapterCard;
