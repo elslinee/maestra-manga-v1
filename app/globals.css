@@ -3,13 +3,10 @@
 @tailwind utilities;
 
 body {
-  -ms-overflow-style: none !important;
-  scrollbar-width: none !important;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-image: url("/Site_Background.jpg");
-
+  background: black url("/Site_Background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
