@@ -10,6 +10,7 @@ function MangaCard(props) {
   return (
     <Link href={`/manga_list/${props.title}`}>
       <div
+        onClick={props.clickEvent}
         key={props.id}
         className="card relative w-full cursor-pointer  group"
       >

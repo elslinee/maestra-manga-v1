@@ -11,7 +11,7 @@ function join_us() {
   useGSAP(() => {
     const tl = gsap.timeline({});
     tl.from(".join_us-page  .container .text ", {
-      delay: 1.8,
+      delay: 1.5,
       opacity: 0,
       y: 100,
     })

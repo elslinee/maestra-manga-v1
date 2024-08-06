@@ -21,6 +21,7 @@ body {
 ::-webkit-scrollbar {
   background-color: #121318;
 }
+
 ::-webkit-scrollbar-thumb {
   background-color: #621f9f;
 }
@@ -125,24 +126,14 @@ body {
 .section-title::before {
   right: 0;
 }
-header .searchLabel input {
-  outline: none;
-  border: 1px solid rgb(255 255 255 / 0.75);
+.search-page input:focus {
+  outline: 1px solid #61209c !important;
 }
-header .searchLabel input:focus {
-  outline: none;
-
-  border: 1px solid #542183;
+.search-page input:focus {
+  outline: 1px solid #61209c !important;
 }
-@media (max-width: 1300px) {
-  header .searchLabel {
-    width: 200px;
-  }
-}
-@media (max-width: 400px) {
-  header .searchLabel {
-    width: 120px;
-  }
+.search-page input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
 }
 
 nav ul li {

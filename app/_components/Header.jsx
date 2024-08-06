@@ -2,11 +2,18 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import SearchPage from "./SearchPage";
 import useFullscreenStatus from "../_components/useFullscreenStatus";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 function Header() {
+  const [isActive, setActive] = useState(false);
+
   const navLinks = [
     {
       name: "الرئيسية",
@@ -44,6 +51,18 @@ function Header() {
       header?.classList.toggle("activeHeader", window.scrollY > 0);
     });
   }, []);
+  const openSearch = () => {
+    gsap.to(".search-page", {
+      zIndex: 2000,
+      opacity: 1,
+      display: "block",
+    });
+    gsap.to(".overlayBlur", {
+      filter: "blur(25px)",
+    });
+  };
+
+  useGSAP(() => {});
   return (
     <>
       {!isFullscreen ? (
@@ -73,15 +92,17 @@ function Header() {
                 </ul>
               </nav>
             </div>
+
             <div className="searchLabel lg:flex relative  hidden justify-end items-center  w-[300px]  ">
               <div className="flex gap-4 items-center">
                 <svg
+                  onClick={() => openSearch()}
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="size-11 cursor-pointer text-white transition hover:text-primary"
+                  className="size-11 searchIcon cursor-pointer text-white transition hover:text-primary"
                 >
                   <path
                     strokeLinecap="round"
@@ -89,14 +110,13 @@ function Header() {
                     d="m15.75 15.75-2.489-2.489m0 0a3.375 3.375 0 1 0-4.773-4.773 3.375 3.375 0 0 0 4.774 4.774ZM21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
                   />
                 </svg>
-
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="size-11 cursor-pointer text-white transition hover:text-primary"
+                  className="size-11  cursor-pointer text-white transition hover:text-primary"
                 >
                   <path
                     strokeLinecap="round"
@@ -105,30 +125,10 @@ function Header() {
                   />
                 </svg>
               </div>
-              {/* <label htmlFor="Search" className=""></label>
-          <input
-            type="text"
-            id="Search"
-            placeholder="بحث"
-            className="w-full  placeholder:text-white/75  tr-4 text-[18px]  pl-12 py-2.5 pr-4 shadow-sm  bg-background text-white"
-          />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="#c3c4c5"
-            className="size-6 absolute left-4"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-            />
-          </svg> */}
             </div>
             <div className="menu lg:hidden  h-full flex gap-4 justify-center items-center">
               <svg
+                onClick={() => openSearch()}
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"

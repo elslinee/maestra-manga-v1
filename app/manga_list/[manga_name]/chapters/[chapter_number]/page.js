@@ -77,12 +77,12 @@ function chapter_page() {
 
   console.log(chapters);
   return (
-    <div className="chapter-page lg:pt-[9.5rem] pt-[7.5rem] text-white">
+    <div className="chapter-page   lg:pt-[9.5rem] pt-[7.5rem] text-white">
       <div className="container">
-        <div className=" text-center mb-6 ">
+        <div className=" text-center mb-6 min-h-[50px] h-[50px]">
           <Link
             href={`/manga_list/${title}`}
-            className={`${baloo_2.className} text-white text-3xl font-semibold`}
+            className={`${baloo_2.className}  text-white text-3xl font-semibold`}
           >
             {" "}
             {title}
@@ -217,7 +217,7 @@ function chapter_page() {
           </div>
         </div>
 
-        <section className="chapter-pages flex flex-col justify-center container items-center   my-14">
+        <section className="chapter-pages min-h-[1000px] h-full flex flex-col justify-center container items-center   my-14">
           {chapterPages_?.map((page) => {
             return (
               <img

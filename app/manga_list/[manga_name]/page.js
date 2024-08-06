@@ -46,7 +46,7 @@ function manga_page() {
           {!isLoading ? (
             <>
               <div className="div_one flex flex-col  items-center">
-                <div className="image_holder h-[350px] w-[270px] rounded-lg mb-4">
+                <div className="image_holder h-[400px] w-[270px] rounded-lg mb-4">
                   <Image
                     src={cover}
                     alt="cover"

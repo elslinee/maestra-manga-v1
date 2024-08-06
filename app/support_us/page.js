@@ -11,7 +11,7 @@ function page() {
   useGSAP(() => {
     const tl = gsap.timeline({});
     tl.from(".join_us-page  .container .text ", {
-      delay: 1.8,
+      delay: 1.5,
       opacity: 0,
       y: 100,
     })
@@ -61,7 +61,7 @@ function page() {
                   />
                 </div>
               </div>
-              <span className="text-[#ffff]   text-[14px] 2xl:text-[25px]  flex max-w-[170px]  leading-[25px] lg:max-w-[100%]  items-center">
+              <span className="text-[#fb5d63]   text-[14px] 2xl:text-[25px]  flex max-w-[170px]  leading-[25px] lg:max-w-[100%]  items-center">
                 اي مساهمة منك ستصنع فرقًا مهمًا، يمكنك دعم الفريق من هنا :
               </span>
               <a href="https://Ko-fi.com/maestramanga" className=" ">
