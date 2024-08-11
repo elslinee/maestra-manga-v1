@@ -5,13 +5,12 @@ import "swiper/css/navigation";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import Image from "next/image";
 import SectionTitle from "./SectionTitle";
-import { Alata, Baloo_2 } from "next/font/google";
 import { useContext, useEffect, useState } from "react";
 import { MangaListContext } from "../_context/MangaListContext";
 import MangaCard from "./MangaCard";
 import SkeletonSlider from "../_skeletonComponents/SkeletonSlider";
 import mangaListApis from "../_utils/mangaListApis";
-const baloo_2 = Baloo_2({ subsets: ["latin"] });
+
 
 function Slider() {
   const [isLoading, setIsLoading] = useState(true);

@@ -1,8 +1,7 @@
-import { Baloo_2 } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-const baloo_2 = Baloo_2({ subsets: ["latin"] });
+
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
@@ -20,7 +19,7 @@ function MangaCard(props) {
               {props.type}
             </span>
             <h3
-              className={`${baloo_2.className}  text-ltr font-bold text-white text-center  text-[16px] line-clamp-3`}
+              className={`  font-baloo2 text-ltr font-bold text-white text-center  text-[16px] line-clamp-3`}
             >
               {props.title}
             </h3>
@@ -41,7 +40,7 @@ function MangaCard(props) {
                   الفصل
                 </span>
                 <span
-                  className={`${baloo_2.className}  block font-[500]  after:content-[''] after:absolute after:bg-primary after:w-[20%] z-[1] after:h-[50px] after:blur-[25px] after:z-[-1]  after:right-[-10px] text-white   px-3 text-[20px]`}
+                  className={`  block font-[500]  after:content-[''] after:absolute after:bg-primary after:w-[20%] z-[1] after:h-[50px] after:blur-[25px] after:z-[-1]  after:right-[-10px] text-white   px-3 text-[20px]`}
                 >
                   {props.chapter}
                 </span>

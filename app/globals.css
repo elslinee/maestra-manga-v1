@@ -2,10 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Cairo";
+  src: url("/fonts/Cairo-VariableFont_slnt,wght.ttf") format("truetype");
+  font-weight: 100 900; /* Range of weights */
+  font-style: normal; /* Specify other styles like italic if needed */
+  font-stretch: normal; /* Adjust for condensed or expanded styles if necessary */
+}
+@font-face {
+  font-family: "Baloo2";
+  src: url("/fonts/Baloo2-VariableFont_wght.ttf") format("truetype");
+  font-weight: 400 800; /* Range of weights */
+  font-style: normal; /* Specify other styles like italic if needed */
+}
+
 body {
+  font-family: "Cairo", sans-serif;
+  font-weight: 400; /* Use any weight within the defined range */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
   background: black url("/Site_Background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -191,4 +208,7 @@ header.activeHeader::after {
 }
 .manga-list-section .cards .card:hover img {
   scale: 1.1;
+}
+input:focus-visible {
+  outline: none !important;
 }

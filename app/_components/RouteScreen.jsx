@@ -29,16 +29,16 @@ function RouteScreen() {
     []
   );
   return (
-    <div className="route-screen bg-background h-screen w-screen flex justify-center items-center   z-[10000] overflow-hidden  fixed">
+    <div className="route-screen bg-background h-screen w-screen flex justify-center items-center   z-[20000] overflow-hidden  fixed">
       <Image
-        className="logo_purple flex justify-center items-center  opacity-0 absolute z-10"
+        className="logo_purple h-[140px] w-[140px] sm:h-[200px] sm:w-[200px] flex justify-center items-center  opacity-0 absolute z-10"
         src={"/logo.svg"}
         alt={"logo"}
         width={200}
         height={200}
       />
       <Image
-        className=" logo_white flex justify-center items-center opacity-0 absolute "
+        className=" logo_white h-[140px] w-[140px] sm:h-[200px] sm:w-[200px] flex justify-center items-center opacity-0 absolute "
         src={"/logo-white.svg"}
         alt={"logo"}
         width={200}

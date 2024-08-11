@@ -84,7 +84,7 @@ function manga_list() {
       <Link
         href={`/manga_list/${title}`}
         key={card?.id}
-        className="card cursor-pointer group  relative  hover:grayscale-[1] tr-4 flex w-fit   items-start gap-4 "
+        className="card w-full cursor-pointer group  relative  hover:grayscale-[1] tr-4 flex   items-start gap-4 "
       >
         <div className="overlay2 content-[''] rounded-[8px] absolute opacity-100 group-hover:opacity-0  w-[50%] h-full left-[0] top-[0]  [transition:0.4s_ease] z-10 p-[12px] ">
           <div className="flex    justify-start items-start">

@@ -9,10 +9,19 @@ import useFullscreenStatus from "../_components/useFullscreenStatus";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRouter } from "next/navigation";
+import userApi from "../_utils/userApi";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 function Header() {
-  const [isActive, setActive] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState([]);
+  const toggleOpen = () => {
+    setIsOpen(true);
+  };
+  const toggleClose = () => {
+    setIsOpen(false);
+  };
 
   const navLinks = [
     {
@@ -63,6 +72,21 @@ function Header() {
   };
 
   useGSAP(() => {});
+  const route = useRouter();
+  const logOut = () => {
+    localStorage.removeItem("token");
+    route.push("/");
+  };
+  const token = localStorage.getItem("token");
+  const getUser_ = () => {
+    userApi.getUser().then((res) => {
+      console.log(res?.data);
+      setUser(res?.data);
+    });
+  };
+  useEffect(() => {
+    getUser_();
+  }, []);
   return (
     <>
       {!isFullscreen ? (
@@ -110,20 +134,72 @@ function Header() {
                     d="m15.75 15.75-2.489-2.489m0 0a3.375 3.375 0 1 0-4.773-4.773 3.375 3.375 0 0 0 4.774 4.774ZM21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
                   />
                 </svg>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="size-11  cursor-pointer text-white transition hover:text-primary"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                  />
-                </svg>
+                {token ? (
+                  <div className="relative ">
+                    <div
+                      className=" "
+                      onMouseEnter={() => toggleOpen()}
+                      onMouseLeave={() => toggleClose()}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="#621f9f"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="size-11  cursor-pointer text-white transition  bg-primary rounded-full"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      className={`absolute 2xl:translate-x-[-50%]  translate-x-[-12%]   left-[50%]  hover:opacity-100 tr-4 flex justify-center items-center end-0 z-10 mt-2 w-56 rounded-md border border-gray-900  bg-background shadow-lg ${
+                        isOpen ? ` opacity-100 ` : ` opacity-0 `
+                      }`}
+                      role="menu"
+                    >
+                      <div className="p-2">
+                        <span className="  justify-center flex w-full  text-[22px] text-[#8029d1] px-4 py-2 rounded-lg">
+                          {user?.username}
+                        </span>
+                        <Link
+                          href="/add_manga"
+                          className="block w-full rounded-lg px-4 py-2 text-md text-center text-white"
+                          role="menuitem"
+                        >
+                          اضافة اعمال او فصول
+                        </Link>
+                        <button
+                          className="text-white w-full text-md px-4 py-2 text-center"
+                          onClick={() => logOut()}
+                        >
+                          تسجيل الخروج
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <Link href={"/login"}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="size-11  cursor-pointer text-white transition hover:text-primary"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                      />
+                    </svg>
+                  </Link>
+                )}
               </div>
             </div>
             <div className="menu lg:hidden  h-full flex gap-4 justify-center items-center">

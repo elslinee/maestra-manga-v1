@@ -138,7 +138,7 @@ function manga_page() {
                     {title_kr && (
                       <div className="flex items-center gap-1">
                         <Image
-                          src={"/jp.png"}
+                          src={"/kr.png"}
                           alt="flag"
                           width={25}
                           height={20}
@@ -151,7 +151,7 @@ function manga_page() {
                     {title_ch && (
                       <div className="flex items-center gap-1">
                         <Image
-                          src={"/jp.png"}
+                          src={"/ch.png"}
                           alt="flag"
                           width={25}
                           height={20}

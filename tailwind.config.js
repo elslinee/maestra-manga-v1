@@ -15,6 +15,10 @@ module.exports = {
       "2xl": "1536px",
     },
     extend: {
+      fontFamily: {
+        cairo: ["Cairo", "sans-serif"],
+        baloo2: ["Baloo2", "sans-serif"],
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
