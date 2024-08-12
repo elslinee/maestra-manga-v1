@@ -1,5 +1,8 @@
+import { parseCookies } from "nookies";
+
 const { default: axiosClient } = require("./axiosClient");
-const token = localStorage.getItem("token");
+const cookies = parseCookies();
+const token = cookies.token;
 
 const getUser = () =>
   axiosClient.get("/users/me?populate=*", {

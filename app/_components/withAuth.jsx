@@ -1,4 +1,5 @@
 import { useRouter } from "next/navigation";
+import { parseCookies } from "nookies";
 import { useEffect } from "react";
 
 const withAuth = (WrappedComponent) => {
@@ -6,7 +7,8 @@ const withAuth = (WrappedComponent) => {
     const router = useRouter();
 
     useEffect(() => {
-      const token = localStorage.getItem("token");
+      const cookies = parseCookies();
+      const token = cookies.token;
       if (!token) {
         router.push("/login");
       }

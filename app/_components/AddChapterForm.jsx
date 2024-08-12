@@ -6,9 +6,11 @@ import { addChapterToManga, handleUpload } from "../_utils/addChaptersApi";
 import mangaListApis from "../_utils/mangaListApis";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { parseCookies } from "nookies";
 
 function AddChapterForm() {
-  const token = localStorage.getItem("token");
+  const cookies = parseCookies();
+  const token = cookies.token;
   const [fileSelected, setFileSelected] = useState(false);
   const router = useRouter();
   const [files, setFiles] = useState([]);
@@ -49,9 +51,6 @@ function AddChapterForm() {
 
       const uploadedFiles = response.data;
       setPagesImgs(uploadedFiles);
-
-      console.log("File(s) uploaded successfully:", uploadedFiles);
-
       // Call the callback function and pass the uploaded files
       if (callback) callback(uploadedFiles);
     } catch (error) {

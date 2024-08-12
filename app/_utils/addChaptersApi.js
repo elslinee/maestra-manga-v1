@@ -1,5 +1,9 @@
+import { parseCookies } from "nookies";
+
 const { default: axiosClient } = require("./axiosClient");
-const token = localStorage.getItem("token");
+
+const cookies = parseCookies();
+const token = cookies.token;
 export async function addChapterToManga(newChapter, mangaID) {
   try {
     const response = await axiosClient.get(
@@ -26,7 +30,6 @@ export async function addChapterToManga(newChapter, mangaID) {
         },
       }
     );
-    console.log("Updated Manga Data:", updateResponse.data);
     return updateResponse.data;
   } catch (error) {
     console.error("Error:", error.message);

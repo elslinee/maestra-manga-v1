@@ -6,6 +6,7 @@ import { useForm, Controller } from "react-hook-form";
 import addMangaApi from "../_utils/addMangaApi";
 import Select from "react-select";
 import { useRouter } from "next/navigation";
+import { parseCookies } from "nookies";
 
 function AddMangaForm() {
   const [titleWithoutSpace1, setTitleWithoutSpace1] = useState("");
@@ -19,7 +20,8 @@ function AddMangaForm() {
   const [jpnTitle, setJpnTitle] = useState("");
   const [krTitle, setKrTitle] = useState("");
   const [chTitle, setChTitle] = useState("");
-  const token = localStorage.getItem("token");
+  const cookies = parseCookies();
+  const token = cookies.token;
 
   const router = useRouter();
   const handleFileChange = (e) => {
@@ -61,7 +63,6 @@ function AddMangaForm() {
       } else if (selectedType === "مانها") {
         setChTitle(titleWithoutSpace3);
       }
-      console.log("File(s) uploaded successfully:", uploadedFiles);
 
       // Call the callback function and pass the uploaded files
       if (callback) callback(uploadedFiles);
@@ -159,7 +160,6 @@ function AddMangaForm() {
 
   const addManga_ = (mangaData) => {
     addMangaApi.addManga(mangaData).then((res) => {
-      console.log(res.data);
     });
   };
   const {
@@ -208,7 +208,6 @@ function AddMangaForm() {
         } else if (selectedType === "مانها") {
           mangaData.title_ch = titleWithoutSpace3;
         }
-        console.log(mangaData);
         addManga_(mangaData);
         router.push("/manga_list");
       });

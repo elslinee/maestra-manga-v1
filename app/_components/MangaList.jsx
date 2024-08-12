@@ -49,7 +49,6 @@ function MangaList() {
       </div>
     );
   });
-  console.log(sortedChapters);
   return (
     <section className="manga-list-section  ">
       <SectionTitle title={"آخـر الإصــدارات"} />

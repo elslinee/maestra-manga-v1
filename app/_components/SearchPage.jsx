@@ -27,7 +27,6 @@ function SearchPage() {
   useEffect(() => {
     getMangaBySearch_(query);
   }, [query]);
-  console.log(searchList);
   const closeSearch = () => {
     gsap.to(".search-page", {
       opacity: 0,

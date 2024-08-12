@@ -8,11 +8,12 @@ import addUserApis from "../../_utils/addUserApis";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { setCookie } from "nookies"; // Import the cookie utility
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const RegisterPage = () => {
-  const { token } = parseCookies();
+
   const [submitting, setSubmitting] = useState(false);
 
   useGSAP(() => {
@@ -47,8 +48,11 @@ const RegisterPage = () => {
       const res = await addUserApis.addUser(userData);
       const token = res?.data?.jwt;
       if (token) {
-        console.log(token);
-        localStorage.setItem("token", token);
+        // Set the token in a cookie
+        setCookie(null, "token", token, {
+          maxAge: 30 * 24 * 60 * 60, // 30 days
+          path: "/",
+        });
         router.push("/add_manga");
       }
     } catch (error) {

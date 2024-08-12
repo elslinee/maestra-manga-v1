@@ -1,7 +1,9 @@
+import { parseCookies } from "nookies";
+
 const { default: axiosClient } = require("./axiosClient");
 
-const token = localStorage.getItem("token"); // Retrieve the token from localStorage
-
+const cookies = parseCookies();
+const token = cookies.token;
 const addManga = (mangaData) =>
   axiosClient.post(
     "/manga-lists?populate=*",

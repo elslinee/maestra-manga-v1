@@ -37,7 +37,6 @@ function manga_page() {
     getMangaByTitle_(manga_name);
   }, []);
   const { manga_name } = useParams();
-  console.log(chapters);
 
   return (
     <div className="manga-page lg:pt-[9.5rem] pt-[7.5rem] text-white text-2xl">

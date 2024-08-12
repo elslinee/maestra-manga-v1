@@ -75,7 +75,6 @@ function chapter_page() {
     router.push(`/manga_list/${title}/chapters/${chapterNumber - 1}`);
   };
 
-  console.log(chapters);
   return (
     <div className="chapter-page   lg:pt-[9.5rem] pt-[7.5rem] text-white">
       <div className="container">

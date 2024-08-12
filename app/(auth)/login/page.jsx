@@ -7,6 +7,7 @@ import addUserApis from "../../_utils/addUserApis";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { setCookie } from "nookies";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 function LoginPage() {
@@ -40,8 +41,11 @@ function LoginPage() {
       const res = await addUserApis.userLogin(userData);
       const token = res?.data?.jwt;
       if (token) {
-        console.log(token);
-        localStorage.setItem("token", token);
+        // Set the token in a cookie
+        setCookie(null, "token", token, {
+          maxAge: 30 * 24 * 60 * 60, // 30 days
+          path: "/",
+        });
         router.push("/add_manga");
       }
     } catch (error) {
@@ -49,7 +53,6 @@ function LoginPage() {
       if (errorMessage.includes("Invalid identifier or password")) {
         setErrorMess("اسم المستخدم او كلمة السر خطأ");
       }
-      console.log("An error occurred:", error.response);
     } finally {
       setSubmitting(false);
     }

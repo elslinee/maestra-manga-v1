@@ -11,6 +11,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRouter } from "next/navigation";
 import userApi from "../_utils/userApi";
+import { destroyCookie, parseCookies } from "nookies";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 function Header() {
@@ -72,15 +73,18 @@ function Header() {
   };
 
   useGSAP(() => {});
+
   const route = useRouter();
+
   const logOut = () => {
-    localStorage.removeItem("token");
-    route.push("/");
+    destroyCookie(null, "token"); // Remove the token cookie
+    route.push("/"); // Redirect to the home page
   };
-  const token = localStorage.getItem("token");
+  const cookies = parseCookies();
+  const token = cookies.token;
+
   const getUser_ = () => {
     userApi.getUser().then((res) => {
-      console.log(res?.data);
       setUser(res?.data);
     });
   };
