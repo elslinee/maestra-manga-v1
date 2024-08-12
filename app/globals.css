@@ -172,6 +172,29 @@ nav ul li.active::after {
   width: 100%;
 }
 
+.menu ul li {
+  color: white;
+  position: relative;
+  transition: 0.4s ease;
+  font-weight: 700;
+  font-size: 18px;
+}
+.menu ul li::after {
+  transition: 0.4s ease;
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 0;
+  height: 0;
+}
+.menu ul li:hover {
+  color: #621f9f;
+}
+.menu ul li.active {
+  color: #621f9f;
+}
+
 header::after {
   transition: 0.4s ease;
   position: absolute;

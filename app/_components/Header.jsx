@@ -51,6 +51,28 @@ function Header() {
       href: "/support_us",
     },
   ];
+  const menuLinks = [
+    {
+      name: "الرئيسية",
+      href: "/",
+    },
+    {
+      name: "قائمة الأعمال",
+      href: "/manga_list",
+    },
+    {
+      name: "الإنضمام لنا",
+      href: "/join_us",
+    },
+    {
+      name: "إدعمنا",
+      href: "/support_us",
+    },
+    {
+      name: "اضف اعمال او فصول",
+      href: "/add_manga",
+    },
+  ];
   const pathName = usePathname();
 
   const isFullscreen = useFullscreenStatus();
@@ -81,8 +103,6 @@ function Header() {
     });
   };
 
-  useGSAP(() => {});
-
   const route = useRouter();
 
   const logOut = () => {
@@ -91,6 +111,20 @@ function Header() {
   };
   const cookies = parseCookies();
   const token = cookies.token;
+  const openMenu = () => {
+    gsap.to("header .menu .menuTab", {
+      right: 0,
+      display: "flex",
+      zIndex: 9999999,
+    });
+  };
+  const closeMenu = () => {
+    gsap.to("header .menu .menuTab", {
+      right: "-1000px",
+      display: "none",
+      zIndex: -9999999,
+    });
+  };
 
   return (
     <>
@@ -121,7 +155,6 @@ function Header() {
                 </ul>
               </nav>
             </div>
-
             <div className="searchLabel lg:flex relative  hidden justify-end items-center  w-[300px]  ">
               <div className="flex gap-4 items-center">
                 <svg
@@ -178,17 +211,18 @@ function Header() {
                         >
                           اضافة اعمال او فصول
                         </Link>
-                        <button
+                        <a
+                          href="/"
                           className="text-white w-full text-md px-4 py-2 text-center"
                           onClick={() => logOut()}
                         >
                           تسجيل الخروج
-                        </button>
+                        </a>
                       </div>
                     </div>
                   </div>
                 ) : (
-                  <Link href={"/login"}>
+                  <a href="/login">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -203,11 +237,87 @@ function Header() {
                         d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
                       />
                     </svg>
-                  </Link>
+                  </a>
                 )}
               </div>
             </div>
-            <div className="menu lg:hidden  h-full flex gap-4 justify-center items-center">
+            <div className="menu lg:hidden  h-full flex gap-6 justify-center items-center">
+              <div className=" menuTab  h-screen w-[100%] flex-col justify-between  rounded-lg bg-background fixed right-[-1000px] hidden z-[-9999999] top-0">
+                <div
+                  onClick={() => closeMenu()}
+                  className="text-white closeMenuTab text-4xl absolute left-0 top-0 p-6 "
+                >
+                  X
+                </div>
+                <div className="px-6 py-6 flex flex-col justify-center items-center h-full">
+                  <a
+                    className="flex justify-center items-center lg:ml-12"
+                    href="/"
+                  >
+                    <Image
+                      src={"/logo.svg"}
+                      alt={"logo"}
+                      width={100}
+                      height={100}
+                    />
+                  </a>
+                  <ul className="flex mt-8 flex-col items-center text-white gap-6  lg:text-[22px] text-nowrap ">
+                    {menuLinks.map((link) => {
+                      const isActive =
+                        pathName === link.href ||
+                        (pathName.startsWith(link.href) && link.href !== "/");
+                      return (
+                        <li
+                          onClick={() => closeMenu()}
+                          key={link.name}
+                          className={isActive ? "active " : " "}
+                        >
+                          <Link href={link.href}>{link.name}</Link>
+                        </li>
+                      );
+                    })}
+                    <li>
+                      {user.username ? (
+                        <a
+                          href="/"
+                          className="text-white w-full text-md  text-center"
+                          onClick={() => {
+                            logOut();
+                            closeMenu();
+                          }}
+                        >
+                          تسجيل الخروج
+                        </a>
+                      ) : (
+                        <Link
+                          href={"/login"}
+                          className="text-white w-full text-md  text-center"
+                          onClick={() => closeMenu()}
+                        >
+                          تسجيل الدخول
+                        </Link>
+                      )}
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="sticky  user inset-x-0 bottom-0 ">
+                  <a
+                    href="#"
+                    className="flex  items-center gap-2 bg-[#200b33] p-4 "
+                  >
+                    <div>
+                      <p className="text-base  text-white">
+                        <strong className="block font-medium">
+                          {user?.username}
+                        </strong>
+
+                        <span> {user?.email} </span>
+                      </p>
+                    </div>
+                  </a>
+                </div>
+              </div>
               <svg
                 onClick={() => openSearch()}
                 xmlns="http://www.w3.org/2000/svg"
@@ -224,6 +334,7 @@ function Header() {
                 />
               </svg>
               <svg
+                onClick={() => openMenu()}
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"

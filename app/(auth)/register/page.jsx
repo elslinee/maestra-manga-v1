@@ -51,7 +51,7 @@ const RegisterPage = () => {
           maxAge: 30 * 24 * 60 * 60, // 30 days
           path: "/",
         });
-        router.push("/add_manga");
+        window.location.href = "/"; // Redirect to the home page with a full page reload
       }
     } catch (error) {
       const errorMessage = error.response?.data?.error?.message || "";
