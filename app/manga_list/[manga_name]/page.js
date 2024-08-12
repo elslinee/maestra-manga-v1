@@ -51,7 +51,7 @@ function manga_page() {
                     alt="cover"
                     width={250}
                     height={340}
-                    className="rounded-lg w-full h-full bg-[#252525]"
+                    className="rounded-lg object-cover w-full h-full bg-[#252525]"
                   />
                 </div>
 
@@ -143,7 +143,7 @@ function manga_page() {
                           height={20}
                         />
                         <span className="text-[13px] font-normal">
-                          {title_jpn}
+                          {title_kr}
                         </span>
                       </div>
                     )}
@@ -156,7 +156,7 @@ function manga_page() {
                           height={20}
                         />
                         <span className="text-[13px] font-normal">
-                          {title_jpn}
+                          {title_ch}
                         </span>
                       </div>
                     )}

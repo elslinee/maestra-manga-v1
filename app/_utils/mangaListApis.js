@@ -17,7 +17,7 @@ const getMangaChapters = () =>
   );
 const getMangaBySearch = (query) =>
   axiosClient.get(
-    `/manga-lists?filters[title][$startsWithi]=${query}&populate=*`
+    `/manga-lists?filters[title][$containsi]=${query}&populate=*`
   );
 
 // https://maestra-manga-strapi.onrender.com/api/manga-lists?filters[title][$eq]=%E2%81%A0Children%20of%20Vamfield&populate[cover]=*&populate[chapters][populate][pages][populate][cover]=*&populate[chapters][populate][manga_lists][populate][cover][sort][name]=asc
