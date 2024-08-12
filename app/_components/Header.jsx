@@ -17,6 +17,15 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState([]);
+  const getUser_ = () => {
+    userApi.getUser().then((res) => {
+      console.log(res?.data);
+      setUser(res?.data);
+    });
+  };
+  useEffect(() => {
+    getUser_();
+  }, []);
   const toggleOpen = () => {
     setIsOpen(true);
   };
@@ -83,14 +92,6 @@ function Header() {
   const cookies = parseCookies();
   const token = cookies.token;
 
-  const getUser_ = () => {
-    userApi.getUser().then((res) => {
-      setUser(res?.data);
-    });
-  };
-  useEffect(() => {
-    getUser_();
-  }, []);
   return (
     <>
       {!isFullscreen ? (
