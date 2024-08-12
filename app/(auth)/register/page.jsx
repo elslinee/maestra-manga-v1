@@ -8,12 +8,10 @@ import addUserApis from "../../_utils/addUserApis";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { setCookie } from "nookies"; // Import the cookie utility
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const RegisterPage = () => {
-
   const [submitting, setSubmitting] = useState(false);
 
   useGSAP(() => {
