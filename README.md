@@ -150,7 +150,7 @@ Please follow the existing code style and conventions.
 
 ## Author
 
-**Ahmed**
+**Ahmed Mohamed (Jinx)**
 
 ---
 
